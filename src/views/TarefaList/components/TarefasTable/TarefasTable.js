@@ -9,8 +9,13 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead
+  TableHead,
+  TableRow,
+  IconButton
 } from '@material-ui/core';
+import TimerIcon from '@material-ui/icons/Timer';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -53,9 +58,29 @@ const TarefasTable = props => {
                 <TableCell>Descrição</TableCell>
                 <TableCell>Categoria</TableCell>
                 <TableCell>Status</TableCell>
+                <TableCell></TableCell>
               </TableHead>
               <TableBody>
-
+                { tarefas.map( tarefa => {
+                    return(
+                      <TableRow  key={tarefa.id}>
+                        <TableCell>{tarefa.id}</TableCell>
+                        <TableCell>{tarefa.descricao}</TableCell>
+                        <TableCell>{tarefa.categoria}</TableCell>
+                        <TableCell>{tarefa.done ? 'Feito' : 'Pendente' }</TableCell>
+                        <TableCell>
+                          <IconButton onClick={e => props.alteraStatus(tarefa.id)}>
+                            { tarefa.done ? 
+                                <DoneAllIcon color='primary' /> 
+                              :
+                                <TimerIcon style={{color:'#A52A2A'}}/>
+                            }
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })
+                }
               </TableBody>
             </Table>
           </div>

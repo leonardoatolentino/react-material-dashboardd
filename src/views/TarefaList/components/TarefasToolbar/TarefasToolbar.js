@@ -11,7 +11,6 @@ import {
   FormControl,
   InputLabel
 } from '@material-ui/core';
-import { createRegularExpressionLiteral } from 'typescript';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -45,10 +44,13 @@ const TarefasToolbar = props => {
   
   const submit = (event) => {
     event.preventDefault();
-    console.log(`Descrição: ${descricao} - Categaria: ${categoria} `);
+    const tarefa = {
+      descricao: descricao,
+      categoria: categoria
+    }
+    props.salvar(tarefa);
     setdescricao('');
     setcategoria('');
-
   }
 
   return (
@@ -79,9 +81,10 @@ const TarefasToolbar = props => {
               <InputLabel>Categoria: </InputLabel>
               <Select onChange={e => setcategoria(e.target.value)} value={categoria}>
                 <MenuItem > Selecione...</MenuItem>
-                <MenuItem value="trabalho" > Trabalho </MenuItem>
-                <MenuItem value="estudos" > Estudos </MenuItem>
-                <MenuItem value="outros" > Outros </MenuItem>
+                <MenuItem value="TRABALHO" > Trabalho </MenuItem>
+                <MenuItem value="ESTUDOS" > Estudos </MenuItem>
+                <MenuItem value="PESSOAL" > Pessoal </MenuItem>
+                <MenuItem value="OUTROS" > Outros </MenuItem>
               </Select>
             </FormControl>
           </Grid>

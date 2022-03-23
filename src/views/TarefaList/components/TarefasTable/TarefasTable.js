@@ -6,15 +6,10 @@ import { makeStyles } from '@material-ui/styles';
 import {
   Card,
   CardContent,
-  Avatar,
-  Checkbox,
   Table,
   TableBody,
   TableCell,
-  TableHead,
-  TableRow,
-  Typography,
-  TablePagination
+  TableHead
 } from '@material-ui/core';
 
 

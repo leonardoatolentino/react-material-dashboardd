@@ -11,7 +11,8 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  IconButton
+  IconButton,
+  Button
 } from '@material-ui/core';
 import TimerIcon from '@material-ui/icons/Timer';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
@@ -59,6 +60,7 @@ const TarefasTable = props => {
                 <TableCell>Categoria</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell></TableCell>
+                <TableCell></TableCell>
               </TableHead>
               <TableBody>
                 { tarefas.map( tarefa => {
@@ -69,13 +71,22 @@ const TarefasTable = props => {
                         <TableCell>{tarefa.categoria}</TableCell>
                         <TableCell>{tarefa.done ? 'Feito' : 'Pendente' }</TableCell>
                         <TableCell>
-                          <IconButton onClick={e => props.alteraStatus(tarefa.id)}>
+                          <IconButton disabled={tarefa.none ? true : false} onClick={e => props.alteraStatus(tarefa.id)}>
                             { tarefa.done ? 
-                                <DoneAllIcon color='primary' /> 
+                                <DoneAllIcon color='primary' />
                               :
                                 <TimerIcon style={{color:'#A52A2A'}}/>
                             }
                           </IconButton>
+                        </TableCell>
+                        <TableCell>
+                        <Button 
+                          variant="contained" 
+                          style={{backgroundColor:'#A52A2A', color:'#fff'}}
+                          onClick={e => props.deleteAction(tarefa.id)}
+                        >
+                          Deletar
+                        </Button>
                         </TableCell>
                       </TableRow>
                     )

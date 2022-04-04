@@ -7,7 +7,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle 
+  DialogTitle
 } from '@material-ui/core';
 
 import axios from 'axios';
@@ -99,11 +99,11 @@ const TarefaList = () => {
     <div className={classes.root}>
       <TarefasToolbar salvar={salvar} />
       <div className={classes.content}>
-        <TarefasTable 
-          alteraStatus={alteraStatus} 
-          tarefas={tarefas}
-          deleteAction={handledeletar}
-        />
+          <TarefasTable 
+            alteraStatus={alteraStatus} 
+            tarefas={tarefas}
+            deleteAction={handledeletar}
+          />
       </div>
       <Dialog open={open} onClose={e => setOpen(false)} >
         <DialogTitle>Atenção!</DialogTitle>
